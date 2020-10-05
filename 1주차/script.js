@@ -1,6 +1,7 @@
 var list = document.getElementById('list');
 var button = document.getElementById('button');
 var input = document.getElementById('input');
+var oldNode = undefined;
 
 var count = 1;
 
@@ -17,15 +18,26 @@ function clickButton() {
     li.innerHTML += "<button class='btn-sm btn-secondary' type='button' onclick='remove("+count+")'>삭제</button>";
     li.innerHTML += "<button class='btn-sm btn-secondary' type='button' onclick='update("+count+")'>수정</button>";
 
-    list.appendChild(li);
+    if(button.innerText === "수정" && oldNode !== undefined)
+    {
+        list.replaceChild(li, oldNode);
 
-    input.value = "";
+        input.value = "";
 
-    count = count+1;
+        button.innerText = "입력";
+    }
+    else if (button.innerText === "입력")
+    {
+        list.appendChild(li);
+        input.value = "";
+        count = count+1;
+    }
 }
 
 function update(count) {
     var li = document.getElementById('li'+count);
+
+    oldNode = li;
 
     console.log(li.firstChild.innerHTML);
 
@@ -33,7 +45,7 @@ function update(count) {
 
     button.innerText = "수정";
     
-    remove(count);
+    //remove(count);
 }
 
 function remove(count) {
