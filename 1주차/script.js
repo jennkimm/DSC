@@ -26,6 +26,7 @@ function clickButton() {
 
         button.innerText = "입력";
     }
+    
     else if (button.innerText === "입력")
     {
         list.appendChild(li);
