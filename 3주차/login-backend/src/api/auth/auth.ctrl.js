@@ -11,7 +11,7 @@ export const register = async ctx => {
         .required(),
         password: Joi.string().required(),
     });
-    const result = scheme.validate(ctx.request.body);
+    const result = schema.validate(ctx.request.body);
     if(result.error) {
         ctx.status = 400;
         ctx.body = result.error;
@@ -34,7 +34,6 @@ export const register = async ctx => {
 
         ctx.body = user.serialize();
     }catch (e) {
-        console.log("here");
         ctx.throw(500, e);
     }
 };
