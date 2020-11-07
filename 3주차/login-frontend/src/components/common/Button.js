@@ -1,6 +1,7 @@
 import React from 'react';
 import styled, { css } from 'styled-components';
 import { Link } from 'react-router-dom';
+import Button from 'antd';
 import palette from '../../lib/styles/palette';
 
 const buttonStyle = css`
