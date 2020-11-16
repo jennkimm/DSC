@@ -9,8 +9,9 @@ const App = () => {
     <>
       <Route component={LoginPage} path="/login" exact/>
       <Route component={RegisterPage} path="/register" />
-      <Route component={WritePage} path="/register" />
+      <Route component={WritePage} path="/write" />
     </>
   );
 };
+
 export default App;

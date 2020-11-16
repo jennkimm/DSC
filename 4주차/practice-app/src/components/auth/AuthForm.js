@@ -37,6 +37,20 @@ const StyledInput = styled.input`
 `;
 
 /**
+ * 버튼 스타일링
+ */
+const StyledButton = styled.button`
+  margin-top:20px;
+  padding:5px;
+  width:100%;
+  background-color: #e3e3e3;
+  border-width: 1px;
+  &:hover {
+    background-color: #bdbdbd;
+  }
+`;
+
+/**
  * 폼 하단에 로그인 혹은 회원가입 링크를 보여줌
  */
 const Footer = styled.div`
@@ -136,7 +150,7 @@ const AuthForm = ({ type }) => {
           />
           </>
         )}
-        <ButtonWithMarginTop
+        <StyledButton
           onClick = {() => 
           {type === 'login' ? (
               alert('아이디 : '+username)
@@ -145,7 +159,7 @@ const AuthForm = ({ type }) => {
             )}
           }>
           {text}
-        </ButtonWithMarginTop>
+        </StyledButton>
       </form>
       <Footer>
         {type === 'login' ? (

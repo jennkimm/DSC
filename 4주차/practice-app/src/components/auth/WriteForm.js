@@ -28,6 +28,21 @@ const StyledInput = styled.input`
   }
 `;
 
+const StyledUl = styled.ul`
+  padding-left: 0px;  
+`;
+
+const StyledButton = styled.button`
+  margin-top:20px;
+  padding:5px;
+  width:100%;
+  background-color: #e3e3e3;
+  border-width: 1px;
+  &:hover {
+    background-color: #bdbdbd;
+  }
+`;
+
 const WriteForm = () => {
     const [ lists, setLists ] = useState([
         {
@@ -40,7 +55,12 @@ const WriteForm = () => {
     const [inputText, setInputText] = useState('');
     const [nextId, setNextId] = useState(2);
 
-    const contentsList = lists.map(list => <li key={list.id}><p>글 제목 : {list.title}<br/>내용 : {list.contents}</p></li>)
+    const onRemove = (id) => {
+      const nextLists = lists.filter(list => list.id !== id);
+      setLists(nextLists);
+    }
+
+    const contentsList = lists.map(list => <li key={list.id} onDoubleClick={() => onRemove(list.id)}><p>글 제목 : {list.title}<br/>내용 : {list.contents}</p></li>)
     return (
         <WriteFormBlock>
             <StyledInput
@@ -53,7 +73,7 @@ const WriteForm = () => {
                 value={inputText} 
                 type="text"
                 onChange={e => setInputText(e.target.value)}/>
-            <button onClick={() => {
+            <StyledButton onClick={() => {
                 const nextLists = lists.concat({
                     id: nextId,
                     title: inputTitle,
@@ -63,8 +83,8 @@ const WriteForm = () => {
                 setLists(nextLists);
                 setTitle('');
                 setInputText('');
-            }}>작성하기</button> 
-            <ul>{contentsList}</ul>
+            }}>작성하기</StyledButton> 
+            <StyledUl>{contentsList}</StyledUl>
         </WriteFormBlock>
     )
 }
