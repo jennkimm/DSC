@@ -1,0 +1,13 @@
+{
+	"folders": [
+		{
+			"path": "../.."
+		},
+		{
+			"path": "../../../DSC"
+		}
+	],
+	"settings": {
+		"git.ignoreLimitWarning": true
+	}
+}
